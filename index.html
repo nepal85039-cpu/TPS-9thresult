@@ -3,36 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T.P.S. English Academy - Test Results</title>
+    <title>T.P.S. English Academy | Test Results</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; margin-bottom: 5px; }
-        h3 { text-align: center; color: #7f8c8d; margin-top: 0; margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th { background-color: #34495e; color: white; padding: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid #ddd; }
-        tr:hover { background-color: #f1f1f1; }
-        .rank-1 { font-weight: bold; color: #d4af37; } /* Gold */
-        .rank-2 { font-weight: bold; color: #aaa9ad; } /* Silver */
-        .rank-3 { font-weight: bold; color: #cd7f32; } /* Bronze */
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.9em; }
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --gold: #d4af37;
+            --silver: #95a5a6;
+            --bronze: #cd7f32;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        header { text-align: center; border-bottom: 2px solid #eee; margin-bottom: 20px; padding-bottom: 10px; }
+        h1 { margin: 0; color: var(--primary); font-size: 1.8rem; }
+        p.subtitle { margin: 5px 0; color: #666; font-weight: 500; }
+        
+        .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+
+        table { width: 100%; border-collapse: collapse; overflow-x: auto; display: block; }
+        th { background-color: var(--primary); color: white; padding: 12px; text-align: left; position: sticky; top: 0; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background-color: #f1f8ff; }
+
+        .rank-I { color: var(--gold); font-weight: bold; }
+        .rank-II { color: var(--silver); font-weight: bold; }
+        .rank-III { color: var(--bronze); font-weight: bold; }
+        .perc-badge { background: #e8f4fd; color: var(--accent); padding: 3px 8px; border-radius: 12px; font-size: 0.85rem; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>T.P.S. English Academy, Chohtan</h1>
-    <h3>2nd Test Record - Class: IXth (Date: 27/09/25)</h3>
+    <header>
+        <h1>T.P.S. English Academy, Chohtan</h1>
+        <p class="subtitle">2nd Test Record | Class: IXth | Date: 27/09/25</p>
+    </header>
 
-    <table>
+    <input type="text" id="searchInput" class="search-box" placeholder="Search for a student name...">
+
+    <table id="resultsTable">
         <thead>
             <tr>
                 <th>S.R.</th>
                 <th>Name</th>
                 <th>Hindi</th>
                 <th>Eng</th>
-                <th>Maths</th>
+                <th>Math</th>
                 <th>SCI</th>
                 <th>SST</th>
                 <th>SKT</th>
@@ -42,19 +58,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>Anushka</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td>95%</td><td class="rank-3">III</td></tr>
-            <tr><td>2</td><td>Avika</td><td>6</td><td>9</td><td>10</td><td>9</td><td>8</td><td>6</td><td>48</td><td>80%</td><td>-</td></tr>
-            <tr><td>3</td><td>Dhruv</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td><td>59</td><td>98.3%</td><td class="rank-2">II</td></tr>
-            <tr><td>4</td><td>Gunjan</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100%</td><td class="rank-1">I</td></tr>
-            <tr><td>5</td><td>Kapil</td><td>7</td><td>5</td><td>10</td><td>9</td><td>8</td><td>7</td><td>46</td><td>76.6%</td><td>-</td></tr>
-            <tr><td>6</td><td>Karanveer</td><td>9</td><td>8</td><td>10</td><td>9</td><td>10</td><td>8</td><td>54</td><td>90%</td><td>-</td></tr>
-            <tr><td>7</td><td>Kartik</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td>95%</td><td class="rank-3">III</td></tr>
-            <tr><td>8</td><td>Krish</td><td>10</td><td>8</td><td>10</td><td>10</td><td>10</td><td>8</td><td>54</td><td>90%</td><td>-</td></tr>
-            <tr><td>9</td><td>Manish</td><td>8</td><td>7</td><td>10</td><td>10</td><td>8</td><td>8</td><td>51</td><td>85%</td><td>-</td></tr>
-            <tr><td>10</td><td>Rashmi</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100%</td><td class="rank-1">I</td></tr>
+            <tr><td>1</td><td>Anushka</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td><span class="perc-badge">95%</span></td><td class="rank-III">III</td></tr>
+            <tr><td>2</td><td>Avika</td><td>6</td><td>9</td><td>10</td><td>9</td><td>8</td><td>6</td><td>48</td><td><span class="perc-badge">80%</span></td><td>-</td></tr>
+            <tr><td>3</td><td>Dhruv</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td><td>59</td><td><span class="perc-badge">98.3%</span></td><td class="rank-II">II</td></tr>
+            <tr><td>4</td><td>Gunjan</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td><span class="perc-badge">100%</span></td><td class="rank-I">I</td></tr>
+            <tr><td>5</td><td>Kapil</td><td>7</td><td>5</td><td>10</td><td>9</td><td>8</td><td>7</td><td>46</td><td><span class="perc-badge">76.6%</span></td><td>-</td></tr>
+            <tr><td>6</td><td>Karanveer</td><td>9</td><td>8</td><td>10</td><td>9</td><td>10</td><td>8</td><td>54</td><td><span class="perc-badge">90%</span></td><td>-</td></tr>
+            <tr><td>7</td><td>Kartik</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td><span class="perc-badge">95%</span></td><td class="rank-III">III</td></tr>
+            <tr><td>8</td><td>Krish</td><td>10</td><td>8</td><td>10</td><td>10</td><td>10</td><td>8</td><td>54</td><td><span class="perc-badge">90%</span></td><td>-</td></tr>
+            <tr><td>9</td><td>Manish</td><td>8</td><td>7</td><td>10</td><td>10</td><td>8</td><td>8</td><td>51</td><td><span class="perc-badge">85%</span></td><td>-</td></tr>
+            <tr><td>10</td><td>Rashmi</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td><span class="perc-badge">100%</span></td><td class="rank-I">I</td></tr>
         </tbody>
     </table>
 </div>
+
+<script>
+    // Simple Search Functionality
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toUpperCase();
+        let rows = document.querySelector("#resultsTable tbody").rows;
+        
+        for (let i = 0; i < rows.length; i++) {
+            let nameCol = rows[i].cells[1].textContent.toUpperCase();
+            rows[i].style.display = nameCol.includes(filter) ? "" : "none";
+        }
+    });
+</script>
 
 </body>
 </html>
