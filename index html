@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.P.S. English Academy - Test Results</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 5px; }
+        h3 { text-align: center; color: #7f8c8d; margin-top: 0; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background-color: #34495e; color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #ddd; }
+        tr:hover { background-color: #f1f1f1; }
+        .rank-1 { font-weight: bold; color: #d4af37; } /* Gold */
+        .rank-2 { font-weight: bold; color: #aaa9ad; } /* Silver */
+        .rank-3 { font-weight: bold; color: #cd7f32; } /* Bronze */
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>T.P.S. English Academy, Chohtan</h1>
+    <h3>2nd Test Record - Class: IXth (Date: 27/09/25)</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S.R.</th>
+                <th>Name</th>
+                <th>Hindi</th>
+                <th>Eng</th>
+                <th>Maths</th>
+                <th>SCI</th>
+                <th>SST</th>
+                <th>SKT</th>
+                <th>Total</th>
+                <th>%</th>
+                <th>Rank</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Anushka</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td>95%</td><td class="rank-3">III</td></tr>
+            <tr><td>2</td><td>Avika</td><td>6</td><td>9</td><td>10</td><td>9</td><td>8</td><td>6</td><td>48</td><td>80%</td><td>-</td></tr>
+            <tr><td>3</td><td>Dhruv</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td><td>59</td><td>98.3%</td><td class="rank-2">II</td></tr>
+            <tr><td>4</td><td>Gunjan</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100%</td><td class="rank-1">I</td></tr>
+            <tr><td>5</td><td>Kapil</td><td>7</td><td>5</td><td>10</td><td>9</td><td>8</td><td>7</td><td>46</td><td>76.6%</td><td>-</td></tr>
+            <tr><td>6</td><td>Karanveer</td><td>9</td><td>8</td><td>10</td><td>9</td><td>10</td><td>8</td><td>54</td><td>90%</td><td>-</td></tr>
+            <tr><td>7</td><td>Kartik</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>8</td><td>57</td><td>95%</td><td class="rank-3">III</td></tr>
+            <tr><td>8</td><td>Krish</td><td>10</td><td>8</td><td>10</td><td>10</td><td>10</td><td>8</td><td>54</td><td>90%</td><td>-</td></tr>
+            <tr><td>9</td><td>Manish</td><td>8</td><td>7</td><td>10</td><td>10</td><td>8</td><td>8</td><td>51</td><td>85%</td><td>-</td></tr>
+            <tr><td>10</td><td>Rashmi</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100%</td><td class="rank-1">I</td></tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
