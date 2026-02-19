@@ -5,99 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.P.S. English Academy | Result Portal</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #e9ecef; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .portal-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        h2 { color: #2c3e50; margin-top: 0; }
-        .input-group { margin-bottom: 15px; text-align: left; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
-        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        button:hover { background: #0056b3; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
         
-        /* The Result Area - Hidden by default */
-        #resultDisplay { display: none; margin-top: 20px; text-align: left; border-top: 2px solid #eee; padding-top: 20px; }
-        .score-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #f9f9f9; }
-        .total-box { background: #f8f9fa; padding: 10px; margin-top: 15px; border-radius: 5px; font-weight: bold; }
-        .error { color: #dc3545; font-size: 14px; margin-top: 10px; display: none; }
+        /* Heading Styles */
+        h1 { color: #1a73e8; margin-bottom: 5px; font-size: 22px; }
+        .school-name { color: #5f6368; font-size: 14px; margin-bottom: 25px; font-weight: bold; }
+
+        /* Form Styles */
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 13px; color: #3c4043; font-weight: 600; }
+        input { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 8px; box-sizing: border-box; font-size: 16px; outline: none; }
+        input:focus { border-color: #1a73e8; }
+        
+        button { width: 100%; padding: 14px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #1557b0; }
+
+        /* Result View - HIDDEN BY DEFAULT */
+        #resultView { display: none; text-align: left; border-top: 2px solid #f1f3f4; margin-top: 20px; padding-top: 20px; }
+        .mark-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f3f4; }
+        .mark-row span:last-child { font-weight: bold; color: #202124; }
+        
+        .summary-box { background: #e8f0fe; padding: 15px; border-radius: 10px; margin-top: 20px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .rank-highlight { color: #d93025; font-weight: bold; }
+        
+        .error { color: #d93025; font-size: 14px; margin-top: 15px; display: none; }
+        .back-link { display: inline-block; margin-top: 20px; color: #1a73e8; text-decoration: none; font-size: 14px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="portal-box">
-    <div id="loginSection">
-        <h2>Student Portal</h2>
-        <p style="color: #777;">T.P.S. English Academy, Chohtan</p>
+<div class="container">
+    <div id="loginScreen">
+        <h1>Student Result Portal</h1>
+        <div class="school-name">T.P.S. English Academy, Chohtan</div>
         
         <div class="input-group">
-            <label>Student Name</label>
-            <input type="text" id="nameInput" placeholder="Enter Name">
+            <label>Full Name</label>
+            <input type="text" id="nameInput" placeholder="Enter student name">
         </div>
         <div class="input-group">
-            <label>S.R. Number</label>
-            <input type="number" id="srInput" placeholder="Enter S.R. No.">
+            <label>S.R. Number (Roll No)</label>
+            <input type="number" id="srInput" placeholder="Enter S.R. Number">
         </div>
         
-        <button onclick="showResult()">View Marksheet</button>
-        <p id="errorMessage" class="error">❌ No record found. Please check details.</p>
+        <button onclick="findStudent()">Check Result</button>
+        <p id="errorMsg" class="error">❌ Student not found. Check Name and S.R. No.</p>
     </div>
 
-    <div id="resultDisplay">
-        <h3 id="resName" style="color: #28a745; margin-bottom: 5px;"></h3>
-        <p id="resSR" style="color: #666; font-size: 14px; margin-top: 0;"></p>
+    <div id="resultView">
+        <h2 id="outName" style="margin:0; color:#1a73e8;"></h2>
+        <p id="outSR" style="color:#70757a; margin: 5px 0 20px 0;"></p>
         
-        <div id="subjectList"></div>
+        <div class="mark-row"><span>Hindi:</span> <span id="mHindi"></span></div>
+        <div class="mark-row"><span>English:</span> <span id="mEng"></span></div>
+        <div class="mark-row"><span>Mathematics:</span> <span id="mMath"></span></div>
+        <div class="mark-row"><span>Science:</span> <span id="mSci"></span></div>
+        <div class="mark-row"><span>S.S.T:</span> <span id="mSst"></span></div>
+        <div class="mark-row"><span>Sanskrit:</span> <span id="mSkt"></span></div>
         
-        <div class="total-box">
-            <div class="score-row"><span>Total Marks:</span> <span id="resTotal"></span></div>
-            <div class="score-row"><span>Percentage:</span> <span id="resPerc"></span></div>
-            <div class="score-row" style="color: #d4af37;"><span>Rank:</span> <span id="resRank"></span></div>
+        <div class="summary-box">
+            <div class="summary-row"><span>Grand Total:</span> <span id="outTotal"></span></div>
+            <div class="summary-row"><span>Percentage:</span> <span id="outPerc"></span></div>
+            <div class="summary-row"><span>Rank:</span> <span id="outRank" class="rank-highlight"></span></div>
         </div>
-        
-        <button onclick="location.reload()" style="background: #6c757d; margin-top: 15px;">Close</button>
+
+        <div style="text-align: center;">
+            <span class="back-link" onclick="location.reload()">← Back to Search</span>
+        </div>
     </div>
 </div>
 
 <script>
-    const data = [
-        { sr: 1, name: "Anushka", hindi: 10, eng: 9, math: 10, sci: 10, sst: 10, skt: 8, total: 57, rank: "III" },
-        { sr: 2, name: "Avika", hindi: 6, eng: 9, math: 10, sci: 9, sst: 8, skt: 6, total: 48, rank: "N/A" },
-        { sr: 3, name: "Dhruv", hindi: 10, eng: 9, math: 10, sci: 10, sst: 10, skt: 10, total: 59, rank: "II" },
-        { sr: 4, name: "Gunjan", hindi: 10, eng: 10, math: 10, sci: 10, sst: 10, skt: 10, total: 60, rank: "I" },
-        { sr: 5, name: "Kapil", hindi: 7, eng: 5, math: 10, sci: 9, sst: 8, skt: 7, total: 46, rank: "N/A" },
-        { sr: 6, name: "Karanveer", hindi: 9, eng: 8, math: 10, sci: 9, sst: 10, skt: 8, total: 54, rank: "N/A" },
-        { sr: 7, name: "Kartik", hindi: 10, eng: 9, math: 10, sci: 10, sst: 10, skt: 8, total: 57, rank: "III" },
-        { sr: 8, name: "Krish", hindi: 10, eng: 8, math: 10, sci: 10, sst: 10, skt: 8, total: 54, rank: "N/A" },
-        { sr: 9, name: "Manish", hindi: 8, eng: 7, math: 10, sci: 10, sst: 8, skt: 8, total: 51, rank: "N/A" },
-        { sr: 10, name: "Rashmi", hindi: 10, eng: 10, math: 10, sci: 10, sst: 10, skt: 10, total: 60, rank: "I" }
+    // Official Data
+    const students = [
+        { sr: 1, name: "Anushka", hi: 10, en: 9, ma: 10, sc: 10, ss: 10, sk: 8, tot: 57, rnk: "III" },
+        { sr: 2, name: "Avika", hi: 6, en: 9, ma: 10, sc: 9, ss: 8, sk: 6, tot: 48, rnk: "-" },
+        { sr: 3, name: "Dhruv", hi: 10, en: 9, ma: 10, sc: 10, ss: 10, sk: 10, tot: 59, rnk: "II" },
+        { sr: 4, name: "Gunjan", hi: 10, en: 10, ma: 10, sc: 10, ss: 10, sk: 10, tot: 60, rnk: "I" },
+        { sr: 5, name: "Kapil", hi: 7, en: 5, ma: 10, sc: 9, ss: 8, sk: 7, tot: 46, rnk: "-" },
+        { sr: 6, name: "Karanveer", hi: 9, en: 8, ma: 10, sc: 9, ss: 10, sk: 8, tot: 54, rnk: "-" },
+        { sr: 7, name: "Kartik", hi: 10, en: 9, ma: 10, sc: 10, ss: 10, sk: 8, tot: 57, rnk: "III" },
+        { sr: 8, name: "Krish", hi: 10, en: 8, ma: 10, sc: 10, ss: 10, sk: 8, tot: 54, rnk: "-" },
+        { sr: 9, name: "Manish", hi: 8, en: 7, ma: 10, sc: 10, ss: 8, sk: 8, tot: 51, rnk: "-" },
+        { sr: 10, name: "Rashmi", hi: 10, en: 10, ma: 10, sc: 10, ss: 10, sk: 10, tot: 60, rnk: "I" }
     ];
 
-    function showResult() {
+    function findStudent() {
         const nameInp = document.getElementById('nameInput').value.trim().toLowerCase();
         const srInp = parseInt(document.getElementById('srInput').value);
-        const error = document.getElementById('errorMessage');
+        const error = document.getElementById('errorMsg');
         
-        const student = data.find(s => s.name.toLowerCase() === nameInp && s.sr === srInp);
+        // Match name and SR number
+        const s = students.find(item => item.name.toLowerCase() === nameInp && item.sr === srInp);
         
-        if (student) {
+        if (s) {
             error.style.display = 'none';
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('resultDisplay').style.display = 'block';
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('resultView').style.display = 'block';
             
-            document.getElementById('resName').innerText = student.name;
-            document.getElementById('resSR').innerText = "S.R. No: " + student.sr;
+            // Fill details
+            document.getElementById('outName').innerText = s.name;
+            document.getElementById('outSR').innerText = "S.R. No: " + s.sr + " | Class: IXth";
+            document.getElementById('mHindi').innerText = s.hi + "/10";
+            document.getElementById('mEng').innerText = s.en + "/10";
+            document.getElementById('mMath').innerText = s.ma + "/10";
+            document.getElementById('mSci').innerText = s.sc + "/10";
+            document.getElementById('mSst').innerText = s.ss + "/10";
+            document.getElementById('mSkt').innerText = s.sk + "/10";
             
-            document.getElementById('subjectList').innerHTML = `
-                <div class="score-row"><span>Hindi</span> <span>${student.hindi}/10</span></div>
-                <div class="score-row"><span>English</span> <span>${student.eng}/10</span></div>
-                <div class="score-row"><span>Maths</span> <span>${student.math}/10</span></div>
-                <div class="score-row"><span>Science</span> <span>${student.sci}/10</span></div>
-                <div class="score-row"><span>S.S.T</span> <span>${student.sst}/10</span></div>
-                <div class="score-row"><span>Sanskrit</span> <span>${student.skt}/10</span></div>
-            `;
-            
-            document.getElementById('resTotal').innerText = student.total + " / 60";
-            document.getElementById('resPerc').innerText = ((student.total/60)*100).toFixed(1) + "%";
-            document.getElementById('resRank').innerText = student.rank;
+            document.getElementById('outTotal').innerText = s.tot + " / 60";
+            document.getElementById('outPerc').innerText = ((s.tot/60)*100).toFixed(1) + "%";
+            document.getElementById('outRank').innerText = s.rnk;
         } else {
             error.style.display = 'block';
         }
